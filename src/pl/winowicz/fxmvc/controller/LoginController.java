@@ -11,32 +11,38 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
-    @FXML
-    private AnchorPane loginAnchorPane;
+	public boolean goodPass = false;
 
-    @FXML
-    private Button selectButton;
+	@FXML
+	private AnchorPane loginAnchorPane;
 
-    @FXML
-    private Label passLabel;
+	@FXML
+	private Button selectButton;
 
-    @FXML
-    private PasswordField passField;
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    	selectButton.setOnAction(new EventHandler<ActionEvent>() {
-    		@Override
-    		public void handle(ActionEvent event) {
-    			if(passField.getText().equals("admin")) {
-    				System.out.println("Brawo");
-    			}
-    		}
-    	});
-    }
+	@FXML
+	private Label passLabel;
+
+	@FXML
+	private PasswordField passField;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		selectButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				if (passField.getText().equals("admin")) {
+					System.out.println("Brawo");
+					goodPass = true;
+					Stage stage = (Stage) selectButton.getScene().getWindow();
+					stage.close();
+
+				}
+			}
+		});
+	}
 
 }
-

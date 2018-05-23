@@ -1,44 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.winowicz.fxmvc.controller.MainController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu fx:id="menuSessions" mnemonicParsing="false" text="Sessions">
+                  <items>
+                    <MenuItem fx:id="addClient" mnemonicParsing="false" text="Add Session" />
+                        <MenuItem fx:id="deleteClient" mnemonicParsing="false" text="Delete Session" />
+                        <MenuItem fx:id="findClient" mnemonicParsing="false" text="Find Session" />
+                  </items>
+                </Menu>
+                <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu fx:id="menuExit" mnemonicParsing="false" text="Exit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
          <center>
-            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-              <tabs>
-                <Tab text="All Sessions">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TableView layoutX="137.0" layoutY="27.0" prefHeight="327.0" prefWidth="413.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-                                <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
-                                </columns>
-                              </TableView>
-                              <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="Add Session" />
-                              <Button layoutX="14.0" layoutY="69.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="Find Session" />
-                              <Button layoutX="14.0" layoutY="30.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="All Sessions" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab text="Untitled Tab 2">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                </Tab>
-              </tabs>
-            </TabPane>
+            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>
