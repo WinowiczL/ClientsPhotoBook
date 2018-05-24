@@ -79,6 +79,9 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button loadTableButton;
+	
+	@FXML
+	private Button findSessionButton;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

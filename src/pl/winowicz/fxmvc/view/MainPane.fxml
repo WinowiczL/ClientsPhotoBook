@@ -49,6 +49,7 @@
                         <Button fx:id="loadTableButton" layoutX="101.0" layoutY="302.0" mnemonicParsing="false" text="Load Table" />
                         <TextField fx:id="fillDescription" layoutX="17.0" layoutY="93.0" promptText="Description" />
                         <TextField fx:id="fillDateOfSession" layoutX="17.0" layoutY="133.0" promptText="Date Of Session" />
+                        <Button fx:id="findSessionButton" layoutX="88.0" layoutY="250.0" mnemonicParsing="false" text="Find Session" />
                      </children>
                   </AnchorPane>
               </content>
