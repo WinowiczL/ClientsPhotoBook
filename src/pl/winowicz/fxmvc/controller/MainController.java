@@ -13,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class MainController implements Initializable {
-
+	
 	@FXML
 	private AnchorPane anchorPane;
 
