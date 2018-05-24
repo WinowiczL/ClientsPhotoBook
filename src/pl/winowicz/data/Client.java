@@ -20,6 +20,10 @@ public class Client {
 		this.typeOfSession = new SimpleStringProperty(typeOfSession);
 		this.priceOfSession = new SimpleStringProperty(priceOfSession);
 	}	
+	
+	public Client() {
+		
+	}
 
 	public String getFirstName() {
 		return firstName.get();
@@ -33,7 +37,7 @@ public class Client {
 		return lastName.get();
 	}
 
-	public void setSecondName(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName.set(lastName);
 	}
 

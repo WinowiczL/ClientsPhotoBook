@@ -1,6 +1,7 @@
 package pl.winowicz.fxmvc.controller;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -45,25 +46,7 @@ public class MainController implements Initializable {
 	private Menu menuExit;
 
 	@FXML
-	private TableView<?> tableView;
-
-	@FXML
-	private TableColumn<?, ?> columnFirstName;
-
-	@FXML
-	private TableColumn<?, ?> columnLastName;
-
-	@FXML
-	private TableColumn<?, ?> columnDescription;
-
-	@FXML
-	private TableColumn<?, ?> columnTypeOfSession;
-
-	@FXML
-	private TableColumn<?, ?> columnDateOfSession;
-
-	@FXML
-	private TableColumn<?, ?> columnPriceOfSession;
+	private TableView<Client> tableView;
 
 	@FXML
 	private TitledPane addSessionPane;
@@ -98,12 +81,12 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		TableColumn columnFirstName = new TableColumn("FirstName");
-		TableColumn columnLastName = new TableColumn("LastName");
-		TableColumn columnDescription = new TableColumn("Description");
-		TableColumn columnTypeOfSession = new TableColumn("TypeOfSession");
-		TableColumn columnDateOfSession = new TableColumn("DateOfSession");
-		TableColumn columnPriceOfSession = new TableColumn("PriceOfSession");
+		TableColumn<Client, String> columnFirstName = new TableColumn("FirstName");
+		TableColumn<Client, String> columnLastName = new TableColumn("LastName");
+		TableColumn<Client, String> columnDescription = new TableColumn("Description");
+		TableColumn<Client, String> columnTypeOfSession = new TableColumn("TypeOfSession");
+		TableColumn<Client, String> columnDateOfSession = new TableColumn("DateOfSession");
+		TableColumn<Client, String> columnPriceOfSession = new TableColumn("PriceOfSession");
 		tableView.getColumns().addAll(columnFirstName, columnLastName, columnDescription,
 				columnDateOfSession, columnTypeOfSession, columnPriceOfSession);
 		
@@ -118,9 +101,16 @@ public class MainController implements Initializable {
 				columnDateOfSession.setCellValueFactory(new PropertyValueFactory<Client,String>("dateOfSession"));
 				columnPriceOfSession.setCellValueFactory(new PropertyValueFactory<Client,String>("priceOfSession"));
 				
-				tableView.setItems(jdbc.firstNameQuery());
-				
+				try {
+					tableView.setItems(jdbc.loadTable());
+				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+								
 			}
 		});
+		
 	}
 }
