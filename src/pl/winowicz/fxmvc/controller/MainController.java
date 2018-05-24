@@ -26,6 +26,8 @@ import pl.winowicz.jdbc.JdbcMain;
 public class MainController implements Initializable {
 
 	JdbcMain jdbc = new JdbcMain();
+	LoadTableController loadTableController = new LoadTableController();
+	SaveSessionController saveSessionController = new SaveSessionController();
 
 	@FXML
 	private AnchorPane anchorPane;
@@ -64,10 +66,10 @@ public class MainController implements Initializable {
 	private TextField fillTypeOfSession;
 
 	@FXML
-	private TextArea fillDescription;
+	private TextField fillDescription;
 
 	@FXML
-	private DatePicker fillDateOfSession;
+	private TextField fillDateOfSession;
 
 	@FXML
 	private TextField fillPriceOfSession;
@@ -80,37 +82,27 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		TableColumn<Client, String> columnFirstName = new TableColumn("FirstName");
-		TableColumn<Client, String> columnLastName = new TableColumn("LastName");
-		TableColumn<Client, String> columnDescription = new TableColumn("Description");
-		TableColumn<Client, String> columnTypeOfSession = new TableColumn("TypeOfSession");
-		TableColumn<Client, String> columnDateOfSession = new TableColumn("DateOfSession");
-		TableColumn<Client, String> columnPriceOfSession = new TableColumn("PriceOfSession");
-		tableView.getColumns().addAll(columnFirstName, columnLastName, columnDescription,
-				columnDateOfSession, columnTypeOfSession, columnPriceOfSession);
-		
-		
+
 		loadTableButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				columnFirstName.setCellValueFactory(new PropertyValueFactory<Client,String>("firstName"));
-				columnLastName.setCellValueFactory(new PropertyValueFactory<Client,String>("lastName"));
-				columnDescription.setCellValueFactory(new PropertyValueFactory<Client,String>("description"));
-				columnTypeOfSession.setCellValueFactory(new PropertyValueFactory<Client,String>("typeOfSession"));
-				columnDateOfSession.setCellValueFactory(new PropertyValueFactory<Client,String>("dateOfSession"));
-				columnPriceOfSession.setCellValueFactory(new PropertyValueFactory<Client,String>("priceOfSession"));
-				
+				loadTableController.loadTable(tableView, loadTableButton);
+			}
+		});
+
+		saveButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
 				try {
-					tableView.setItems(jdbc.loadTable());
+					saveSessionController.saveSession(fillFirstName, fillLastName, fillDescription, fillDateOfSession,
+							fillTypeOfSession, fillPriceOfSession);
 				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
-								
 			}
 		});
-		
+
 	}
 }
