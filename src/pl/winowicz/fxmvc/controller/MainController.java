@@ -1,51 +1,87 @@
 package pl.winowicz.fxmvc.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class MainController implements Initializable {
-	
-	@FXML
-	private AnchorPane anchorPane;
+public class MainController {
 
-	@FXML
-	private BorderPane borderPane;
+    @FXML
+    private AnchorPane anchorPane;
 
-	@FXML
-	private MenuBar menuBar;
+    @FXML
+    private BorderPane borderPane;
 
-	@FXML
-	private Menu menuSessions;
+    @FXML
+    private MenuBar menuBar;
 
-	@FXML
-	private MenuItem addClient;
+    @FXML
+    private Menu menuSessions;
 
-	@FXML
-	private MenuItem deleteClient;
+    @FXML
+    private Menu menuHelp;
 
-	@FXML
-	private MenuItem findClient;
+    @FXML
+    private Menu menuExit;
 
-	@FXML
-	private Menu menuHelp;
+    @FXML
+    private TableView<?> tableView;
 
-	@FXML
-	private Menu menuExit;
+    @FXML
+    private TableColumn<?, ?> columnFirstName;
 
-	@FXML
-	private TableView<?> tableView;
+    @FXML
+    private TableColumn<?, ?> columnLastName;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    private TableColumn<?, ?> columnDescription;
 
-	}
+    @FXML
+    private TableColumn<?, ?> columnTypeOfSession;
+
+    @FXML
+    private TableColumn<?, ?> columnDateOfSession;
+
+    @FXML
+    private TableColumn<?, ?> columnPriceOfSession;
+
+    @FXML
+    private TitledPane addSessionPane;
+
+    @FXML
+    private AnchorPane addSessionAnchorPane;
+
+    @FXML
+    private TextField fillFirstName;
+
+    @FXML
+    private TextField fillLastName;
+
+    @FXML
+    private TextField fillTypeOfSession;
+
+    @FXML
+    private TextArea fillDescription;
+
+    @FXML
+    private DatePicker fillDateOfSession;
+
+    @FXML
+    private TextField fillPriceOfSession;
+
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    private Button loadTableButton;
+
 }
