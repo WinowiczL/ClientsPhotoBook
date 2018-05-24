@@ -11,7 +11,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 
-		Parent parent1 = (Parent) FXMLLoader.load(getClass().getResource("/pl/winowicz/fxmvc/view/LoginPane.fxml"));
+		Parent parent1 = (Parent) FXMLLoader.load(getClass().getResource("/pl/winowicz/fxmvc/view/MainPane.fxml"));
 		Scene scene1 = new Scene(parent1);
 		stage.setScene(scene1);
 		stage.setTitle("Login Page");

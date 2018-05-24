@@ -36,7 +36,7 @@ public class LoginController implements Initializable {
 			public void handle(ActionEvent event) {
 				if (passField.getText().equals("admin")) {
 				// What here ???
-					new ChooseScene(scene);
+					
 				}
 			}
 		});
