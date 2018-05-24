@@ -11,11 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
-
-	public boolean goodPass = false;
 
 	@FXML
 	private AnchorPane loginAnchorPane;
@@ -35,10 +32,6 @@ public class LoginController implements Initializable {
 			@Override
 			public void handle(ActionEvent event) {
 				if (passField.getText().equals("admin")) {
-					System.out.println("Brawo");
-					goodPass = true;
-					Stage stage = (Stage) selectButton.getScene().getWindow();
-					stage.close();
 
 				}
 			}
