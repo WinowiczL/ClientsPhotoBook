@@ -21,13 +21,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import pl.winowicz.data.Client;
-import pl.winowicz.jdbc.JdbcMain;
+import pl.winowicz.jdbc.LoadTableQuery;
 
 public class MainController implements Initializable {
 
-	JdbcMain jdbc = new JdbcMain();
+	LoadTableQuery jdbc = new LoadTableQuery();
 	LoadTableController loadTableController = new LoadTableController();
 	SaveSessionController saveSessionController = new SaveSessionController();
+	TableOnMainPane tableOnMainPane = new TableOnMainPane();
 
 	@FXML
 	private AnchorPane anchorPane;
@@ -79,12 +80,14 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button loadTableButton;
-	
+
 	@FXML
 	private Button findSessionButton;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		tableOnMainPane.createTableOnMainPane(tableView);
 
 		loadTableButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

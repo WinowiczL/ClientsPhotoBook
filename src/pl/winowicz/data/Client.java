@@ -19,10 +19,10 @@ public class Client {
 		this.dateOfSession = new SimpleStringProperty(dateOfSession);
 		this.typeOfSession = new SimpleStringProperty(typeOfSession);
 		this.priceOfSession = new SimpleStringProperty(priceOfSession);
-	}	
-	
+	}
+
 	public Client() {
-		
+
 	}
 
 	public String getFirstName() {

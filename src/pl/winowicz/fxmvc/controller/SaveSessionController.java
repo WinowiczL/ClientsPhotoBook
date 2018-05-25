@@ -26,7 +26,7 @@ public class SaveSessionController {
 		String dateOfSession = fillDateOfSession.getText();
 		String typeOfSession = fillTypeOfSession.getText();
 		String priceOfSession = fillPriceOfSession.getText();
-		
+
 		final String driver = "com.mysql.jdbc.Driver";
 		Class.forName(driver);
 
@@ -34,15 +34,15 @@ public class SaveSessionController {
 		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", "qwerty123");
 
 		Statement statement = conn.createStatement();
-		String query = "INSERT INTO sessions VALUES('" + firstName + "','" + lastName + "','" + description
-				+ "','" + dateOfSession + "','" + typeOfSession + "','" + priceOfSession + "');";
+		String query = "INSERT INTO sessions VALUES('" + firstName + "','" + lastName + "','" + description + "','"
+				+ dateOfSession + "','" + typeOfSession + "','" + priceOfSession + "');";
 		final String sqlQuery = query;
 		statement.executeUpdate(sqlQuery);
 
 		if (statement != null) {
 			statement.close();
 		}
-		
+
 		if (conn != null) {
 			conn.close();
 		}

@@ -14,7 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController implements Initializable {
-	
+
 	private Scene scene;
 
 	@FXML
@@ -35,14 +35,14 @@ public class LoginController implements Initializable {
 			@Override
 			public void handle(ActionEvent event) {
 				if (passField.getText().equals("admin")) {
-				// What here ???
-					
+					// What here ???
+
 				}
 			}
 		});
 	}
-	
+
 	public void setScene(Scene scene) {
-        this.scene = scene;
-    }
+		this.scene = scene;
+	}
 }

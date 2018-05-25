@@ -9,28 +9,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pl.winowicz.data.Client;
-import pl.winowicz.jdbc.JdbcMain;
+import pl.winowicz.jdbc.LoadTableQuery;
 
 public class LoadTableController {
 
 	public void loadTable(TableView<Client> tableView, Button loadTableButton) {
-
-		JdbcMain jdbc = new JdbcMain();
-		TableColumn<Client, String> columnFirstName = new TableColumn("FirstName");
-		TableColumn<Client, String> columnLastName = new TableColumn("LastName");
-		TableColumn<Client, String> columnDescription = new TableColumn("Description");
-		TableColumn<Client, String> columnTypeOfSession = new TableColumn("TypeOfSession");
-		TableColumn<Client, String> columnDateOfSession = new TableColumn("DateOfSession");
-		TableColumn<Client, String> columnPriceOfSession = new TableColumn("PriceOfSession");
-		tableView.getColumns().addAll(columnFirstName, columnLastName, columnDescription, columnDateOfSession,
-				columnTypeOfSession, columnPriceOfSession);
-
-		columnFirstName.setCellValueFactory(new PropertyValueFactory<Client, String>("firstName"));
-		columnLastName.setCellValueFactory(new PropertyValueFactory<Client, String>("lastName"));
-		columnDescription.setCellValueFactory(new PropertyValueFactory<Client, String>("description"));
-		columnTypeOfSession.setCellValueFactory(new PropertyValueFactory<Client, String>("typeOfSession"));
-		columnDateOfSession.setCellValueFactory(new PropertyValueFactory<Client, String>("dateOfSession"));
-		columnPriceOfSession.setCellValueFactory(new PropertyValueFactory<Client, String>("priceOfSession"));
+		
+		LoadTableQuery jdbc = new LoadTableQuery();
 
 		try {
 			tableView.setItems(jdbc.loadTable());

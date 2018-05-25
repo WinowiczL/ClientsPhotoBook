@@ -13,10 +13,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pl.winowicz.data.Client;
 
-public class JdbcMain {
+public class LoadTableQuery {
 
 	public ObservableList<Client> loadTable() throws ClassNotFoundException, SQLException, InterruptedException {
-		
+
 		Client client = new Client();
 		List<Client> list = new ArrayList<>();
 
@@ -43,8 +43,7 @@ public class JdbcMain {
 			dateOfSession = resultSet.getString("dateOfSession");
 			typeOfSession = resultSet.getString("typeOfSession");
 			priceOfSession = resultSet.getString("priceOfSession");
-			list.add(new Client(firstName, lastName, description, dateOfSession, 
-					typeOfSession, priceOfSession));
+			list.add(new Client(firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession));
 		}
 
 		if (statement != null) {
@@ -57,10 +56,8 @@ public class JdbcMain {
 			conn.close();
 		}
 
-		final ObservableList<Client> data = FXCollections.observableArrayList(
-				list
-				);
-		
+		final ObservableList<Client> data = FXCollections.observableArrayList(list);
+
 		return data;
 
 	}
