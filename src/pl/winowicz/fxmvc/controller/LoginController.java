@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController implements Initializable {
@@ -28,13 +29,17 @@ public class LoginController implements Initializable {
 
 	@FXML
 	private PasswordField passField;
+	
+	@FXML
+    private ImageView imageView;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+        
 		selectButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if (passField.getText().equals("WinowiczL")) {
+				if (passField.getText().equals("library")) {
 					try {
 						chooseScene.setSceneMainPane();
 					} catch (IOException e) {
