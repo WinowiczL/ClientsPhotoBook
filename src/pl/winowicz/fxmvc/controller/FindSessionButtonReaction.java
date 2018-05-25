@@ -9,7 +9,7 @@ import com.mysql.jdbc.Connection;
 
 import javafx.scene.control.TextField;
 
-public class FindSessionController {
+public class FindSessionButtonReaction {
 
 	public void findSession(TextField fillFirstName, TextField fillLastName, TextField fillDescription,
 			TextField fillDateOfSession, TextField fillTypeOfSession, TextField fillPriceOfSession)

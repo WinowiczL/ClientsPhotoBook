@@ -5,16 +5,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pl.winowicz.data.Client;
 
-public class TableOnMainPane {
+public class TableOnMainPaneCreate {
 
 	public void createTableOnMainPane(TableView<Client> tableView) {
 
-		TableColumn<Client, String> columnFirstName = new TableColumn("FirstName");
-		TableColumn<Client, String> columnLastName = new TableColumn("LastName");
-		TableColumn<Client, String> columnDescription = new TableColumn("Description");
-		TableColumn<Client, String> columnTypeOfSession = new TableColumn("TypeOfSession");
-		TableColumn<Client, String> columnDateOfSession = new TableColumn("DateOfSession");
-		TableColumn<Client, String> columnPriceOfSession = new TableColumn("PriceOfSession");
+		TableColumn<Client, String> columnFirstName = new TableColumn<Client, String>("FirstName");
+		TableColumn<Client, String> columnLastName = new TableColumn<Client, String>("LastName");
+		TableColumn<Client, String> columnDescription = new TableColumn<Client, String>("Description");
+		TableColumn<Client, String> columnTypeOfSession = new TableColumn<Client, String>("TypeOfSession");
+		TableColumn<Client, String> columnDateOfSession = new TableColumn<Client, String>("DateOfSession");
+		TableColumn<Client, String> columnPriceOfSession = new TableColumn<Client, String>("PriceOfSession");
 		tableView.getColumns().addAll(columnFirstName, columnLastName, columnDescription, columnDateOfSession,
 				columnTypeOfSession, columnPriceOfSession);
 

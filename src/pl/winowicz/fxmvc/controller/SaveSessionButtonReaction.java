@@ -1,20 +1,15 @@
 package pl.winowicz.fxmvc.controller;
 
+import java.awt.Label;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.mysql.jdbc.Connection;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class SaveSessionController {
+public class SaveSessionButtonReaction {
 
 	public void saveSession(TextField fillFirstName, TextField fillLastName, TextField fillDescription,
 			TextField fillDateOfSession, TextField fillTypeOfSession, TextField fillPriceOfSession)
@@ -46,5 +41,13 @@ public class SaveSessionController {
 		if (conn != null) {
 			conn.close();
 		}
+
+		fillFirstName.setText(null);
+		fillLastName.setText(null);
+		fillDescription.setText(null);
+		fillDateOfSession.setText(null);
+		fillTypeOfSession.setText(null);
+		fillPriceOfSession.setText(null);
+
 	}
 }
