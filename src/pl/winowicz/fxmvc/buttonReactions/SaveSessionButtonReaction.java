@@ -1,4 +1,4 @@
-package pl.winowicz.fxmvc.controller;
+package pl.winowicz.fxmvc.buttonReactions;
 
 import java.awt.Label;
 import java.sql.DriverManager;

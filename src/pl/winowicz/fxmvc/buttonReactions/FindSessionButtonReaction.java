@@ -1,4 +1,4 @@
-package pl.winowicz.fxmvc.controller;
+package pl.winowicz.fxmvc.buttonReactions;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,15 +13,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import pl.winowicz.data.Client;
 
-public class OrderByButtonReaction {
+public class FindSessionButtonReaction {
 
-	public void orderByReaction(ComboBox<String> orderByComboBox, TableView tableView)
+	public void findSession(ComboBox<String> findComboBox, TableView tableView, TextField fillValueToFind)
 			throws ClassNotFoundException, SQLException, InterruptedException {
 
-		String value = orderByComboBox.getValue();
+		
+		String category = findComboBox.getValue();
+		String value = fillValueToFind.getText();
 
+		System.out.println("SELECT firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions"
+				+ " WHERE " + category + "='" + value + "';");
 		List<Client> list = new ArrayList<>();
 		final String driver = "com.mysql.jdbc.Driver";
 		Class.forName(driver);
@@ -31,7 +36,7 @@ public class OrderByButtonReaction {
 
 		Statement statement = conn.createStatement();
 		final String sqlQuery = "SELECT firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions"
-				+ " ORDER BY " + value;
+				+ " WHERE " + category + " = " + value;
 		ResultSet resultSet = statement.executeQuery(sqlQuery);
 
 		String firstName = null;

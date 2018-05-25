@@ -14,7 +14,7 @@ public class Main extends Application {
 		Parent parent1 = (Parent) FXMLLoader.load(getClass().getResource("/pl/winowicz/fxmvc/view/MainPane.fxml"));
 		Scene scene1 = new Scene(parent1);
 		stage.setScene(scene1);
-		stage.setTitle("Login Page");
+		stage.setTitle("Main Page");
 		stage.show();
 
 	}

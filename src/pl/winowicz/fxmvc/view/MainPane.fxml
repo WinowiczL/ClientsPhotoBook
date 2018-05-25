@@ -46,12 +46,13 @@
                         <TextField fx:id="fillLastName" layoutX="17.0" layoutY="54.0" promptText="Last Name" />
                         <TextField fx:id="fillTypeOfSession" layoutX="17.0" layoutY="172.0" promptText="Type Of Session" />
                         <TextField fx:id="fillPriceOfSession" layoutX="17.0" layoutY="209.0" promptText="Price Of Session" />
-                        <Button fx:id="saveButton" layoutX="17.0" layoutY="250.0" mnemonicParsing="false" text="Save" />
-                        <Button fx:id="loadTableButton" layoutX="100.0" layoutY="390.0" mnemonicParsing="false" text="Load Table" />
+                        <Button fx:id="saveButton" layoutX="17.0" layoutY="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="166.0" text="Save" />
+                        <Button fx:id="loadTableButton" layoutX="101.0" layoutY="422.0" mnemonicParsing="false" text="Load Table" />
                         <TextField fx:id="fillDescription" layoutX="17.0" layoutY="93.0" promptText="Description" />
                         <TextField fx:id="fillDateOfSession" layoutX="17.0" layoutY="133.0" promptText="Date Of Session" />
-                        <Button fx:id="findSessionButton" layoutX="17.0" layoutY="302.0" mnemonicParsing="false" text="Find Session" />
-                        <ComboBox fx:id="orderByComboBox" layoutX="17.0" layoutY="347.0" prefWidth="150.0" promptText="Order By" />
+                        <ComboBox fx:id="orderByComboBox" layoutX="17.0" layoutY="388.0" prefWidth="150.0" promptText="Order By" />
+                        <TextField fx:id="fillValueToFind" layoutX="17.0" layoutY="337.0" prefHeight="27.0" prefWidth="164.0" promptText="Put Value to Find" />
+                        <ComboBox fx:id="findComboBox" layoutX="17.0" layoutY="302.0" prefHeight="27.0" prefWidth="164.0" promptText="Find" />
                      </children>
                   </AnchorPane>
               </content>

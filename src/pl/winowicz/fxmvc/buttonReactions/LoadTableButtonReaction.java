@@ -1,4 +1,4 @@
-package pl.winowicz.jdbc;
+package pl.winowicz.fxmvc.buttonReactions;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,12 +11,15 @@ import com.mysql.jdbc.Connection;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import pl.winowicz.data.Client;
 
-public class LoadTableQuery {
+public class LoadTableButtonReaction {
 
-	public ObservableList<Client> loadTable() throws ClassNotFoundException, SQLException, InterruptedException {
-
+	public void loadTable(TableView<Client> tableView, Button loadTableButton)
+			throws SQLException, ClassNotFoundException {
+		
 		List<Client> list = new ArrayList<>();
 
 		final String driver = "com.mysql.jdbc.Driver";
@@ -57,7 +60,10 @@ public class LoadTableQuery {
 
 		final ObservableList<Client> data = FXCollections.observableArrayList(list);
 
-		return data;
+		
+		tableView.setItems(data);
+		}
 
 	}
-}
+
+

@@ -1,13 +1,20 @@
 package pl.winowicz.fxmvc.controller;
 
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pl.winowicz.data.Client;
 
-public class TableOnMainPaneCreate {
+public class CreatingBetterButtons {
 
-	public void createTableOnMainPane(TableView<Client> tableView) {
+	public void createBetterButtons(TableView<Client> tableView, ComboBox<String> orderByComboBox, ComboBox<String> findComboBox) {
+		
+		findComboBox.getItems().addAll("firstName", "lastName", "priceOfSession");
+		findComboBox.setPromptText("Find By");
+		
+		orderByComboBox.getItems().addAll("firstName", "lastName", "priceOfSession");
+		orderByComboBox.setPromptText("Order By");
 
 		TableColumn<Client, String> columnFirstName = new TableColumn<Client, String>("FirstName");
 		TableColumn<Client, String> columnLastName = new TableColumn<Client, String>("LastName");
