@@ -1,6 +1,5 @@
 package pl.winowicz.fxmvc.buttonReactions;
 
-import java.awt.Label;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;

@@ -18,7 +18,7 @@ import pl.winowicz.data.Client;
 
 public class FindSessionButtonReaction {
 
-	public void findSession(ComboBox<String> findComboBox, TableView tableView, TextField fillValueToFind)
+	public void findSession(ComboBox<String> findComboBox, TableView<Client> tableView, TextField fillValueToFind)
 			throws ClassNotFoundException, SQLException, InterruptedException {
 
 		
@@ -35,8 +35,8 @@ public class FindSessionButtonReaction {
 		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", "qwerty123");
 
 		Statement statement = conn.createStatement();
-		final String sqlQuery = "SELECT firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions"
-				+ " WHERE " + category + " = " + value;
+		final String sqlQuery = ("SELECT firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions"
+				+ " WHERE " + category + "='" + value + "';");
 		ResultSet resultSet = statement.executeQuery(sqlQuery);
 
 		String firstName = null;

@@ -17,7 +17,7 @@ import pl.winowicz.data.Client;
 
 public class OrderByButtonReaction {
 
-	public void orderByReaction(ComboBox<String> orderByComboBox, TableView tableView)
+	public void orderByReaction(ComboBox<String> orderByComboBox, TableView<Client> tableView)
 			throws ClassNotFoundException, SQLException, InterruptedException {
 
 		String value = orderByComboBox.getValue();

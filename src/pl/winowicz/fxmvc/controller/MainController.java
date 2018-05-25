@@ -1,8 +1,10 @@
 package pl.winowicz.fxmvc.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,13 +12,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import pl.winowicz.data.Client;
+import pl.winowicz.fxmvc.app.Main;
 import pl.winowicz.fxmvc.buttonReactions.FindSessionButtonReaction;
 import pl.winowicz.fxmvc.buttonReactions.LoadTableButtonReaction;
 import pl.winowicz.fxmvc.buttonReactions.OrderByButtonReaction;
@@ -29,6 +31,8 @@ public class MainController implements Initializable {
 	CreatingBetterButtons creatingBetterButtons = new CreatingBetterButtons();
 	OrderByButtonReaction orderByButtonReaction = new OrderByButtonReaction();
 	FindSessionButtonReaction findSessionButtonReaction = new FindSessionButtonReaction();
+	ChooseScene chooseScene = new ChooseScene();
+	Main mc = new Main();
 
 	@FXML
 	private AnchorPane anchorPane;
@@ -37,16 +41,13 @@ public class MainController implements Initializable {
 	private BorderPane borderPane;
 
 	@FXML
-	private MenuBar menuBar;
-
-	@FXML
 	private Menu menuSessions;
 
 	@FXML
-	private Menu menuHelp;
+	private Button exitButton;
 
 	@FXML
-	private Menu menuExit;
+	private Button aboutButton;
 
 	@FXML
 	private TableView<Client> tableView;
@@ -83,22 +84,41 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button findSessionButton;
-	
+
 	@FXML
-    private ComboBox<String> orderByComboBox;
-	
+	private ComboBox<String> orderByComboBox;
+
 	@FXML
 	private TextField fillValueToFind;
-	
+
 	@FXML
-    private ComboBox<String> findComboBox;	
-	
+	private ComboBox<String> findComboBox;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		creatingBetterButtons.createBetterButtons(tableView, orderByComboBox, findComboBox);
-		
+
+		exitButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Main.window.close();
+			}
+		});
+
+		aboutButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					chooseScene.setSceneAboutPane();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+		});
+
 		orderByComboBox.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -110,7 +130,7 @@ public class MainController implements Initializable {
 				}
 			}
 		});
-		
+
 		findComboBox.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -122,7 +142,7 @@ public class MainController implements Initializable {
 				}
 			}
 		});
-		
+
 		loadTableButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

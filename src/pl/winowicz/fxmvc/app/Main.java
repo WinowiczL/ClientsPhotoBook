@@ -6,16 +6,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
 
+public class Main extends Application {
+	
+	public static Stage window;
+	
 	@Override
 	public void start(Stage stage) throws Exception {
-
-		Parent parent1 = (Parent) FXMLLoader.load(getClass().getResource("/pl/winowicz/fxmvc/view/MainPane.fxml"));
+		window = stage;
+		Parent parent1 = (Parent) FXMLLoader.load(getClass().getResource("/pl/winowicz/fxmvc/view/LoginPane.fxml"));
 		Scene scene1 = new Scene(parent1);
 		stage.setScene(scene1);
-		stage.setTitle("Main Page");
-		stage.show();
+		stage.setTitle("Login Page");
+		stage.show();		
+		
 
 	}
 
