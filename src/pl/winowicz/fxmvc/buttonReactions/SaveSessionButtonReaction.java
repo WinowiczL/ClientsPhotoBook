@@ -28,18 +28,10 @@ public class SaveSessionButtonReaction {
 		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", "qwerty123");
 
 		Statement statement = conn.createStatement();
-		String query = "INSERT INTO sessions VALUES('" + firstName + "','" + lastName + "','" + description + "','"
-				+ dateOfSession + "','" + typeOfSession + "','" + priceOfSession + "');";
-		final String sqlQuery = query;
-		statement.executeUpdate(sqlQuery);
-
-		if (statement != null) {
-			statement.close();
-		}
-
-		if (conn != null) {
-			conn.close();
-		}
+		String queryInsert = "INSERT INTO sessions VALUES('" + firstName + "','" + lastName + "','" + description
+				+ "','" + dateOfSession + "','" + typeOfSession + "','" + priceOfSession + "');";
+		final String sqlQueryInsert = queryInsert;
+		statement.executeUpdate(sqlQueryInsert);
 
 		fillFirstName.setText(null);
 		fillLastName.setText(null);

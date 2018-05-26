@@ -161,6 +161,7 @@ public class MainController implements Initializable {
 				try {
 					saveSessionController.saveSession(fillFirstName, fillLastName, fillDescription, fillDateOfSession,
 							fillTypeOfSession, fillPriceOfSession);
+					loadTableButtonReaction.loadTable(tableView, loadTableButton);
 				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
