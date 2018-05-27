@@ -22,7 +22,7 @@
                      </graphic></Menu>
                   <Menu fx:id="aboutMenu" mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="aboutButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" text="About" textAlignment="CENTER" />
+                        <Button fx:id="aboutButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" text="How To Use" textAlignment="CENTER" />
                      </graphic>
                   </Menu>
               </menus>

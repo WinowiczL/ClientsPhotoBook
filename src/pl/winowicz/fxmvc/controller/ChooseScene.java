@@ -21,7 +21,7 @@ public class ChooseScene {
 		Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/pl/winowicz/fxmvc/view/AboutPane.fxml"));
 		Scene scene = new Scene(parent);
 		Main.window.setScene(scene);
-		Main.window.setTitle("About Pane");
+		Main.window.setTitle("How To Use Page");
 		Main.window.show();
 	}
 }
