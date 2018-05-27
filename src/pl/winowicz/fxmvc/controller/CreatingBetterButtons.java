@@ -8,23 +8,26 @@ import pl.winowicz.data.Client;
 
 public class CreatingBetterButtons {
 
-	public void createBetterButtons(TableView<Client> tableView, ComboBox<String> orderByComboBox, ComboBox<String> findComboBox) {
-		
-		findComboBox.getItems().addAll("firstName", "lastName", "priceOfSession");
+	public void createBetterButtons(TableView<Client> tableView, ComboBox<String> orderByComboBox,
+			ComboBox<String> findComboBox) {
+
+		findComboBox.getItems().addAll("id", "firstName", "lastName", "priceOfSession");
 		findComboBox.setPromptText("Find By");
-		
-		orderByComboBox.getItems().addAll("firstName", "lastName", "priceOfSession");
+
+		orderByComboBox.getItems().addAll("id", "firstName", "lastName", "priceOfSession");
 		orderByComboBox.setPromptText("Order By");
 
+		TableColumn<Client, String> columnId = new TableColumn<Client, String>("id");
 		TableColumn<Client, String> columnFirstName = new TableColumn<Client, String>("FirstName");
 		TableColumn<Client, String> columnLastName = new TableColumn<Client, String>("LastName");
 		TableColumn<Client, String> columnDescription = new TableColumn<Client, String>("Description");
 		TableColumn<Client, String> columnTypeOfSession = new TableColumn<Client, String>("TypeOfSession");
 		TableColumn<Client, String> columnDateOfSession = new TableColumn<Client, String>("DateOfSession");
 		TableColumn<Client, String> columnPriceOfSession = new TableColumn<Client, String>("PriceOfSession");
-		tableView.getColumns().addAll(columnFirstName, columnLastName, columnDescription, columnDateOfSession,
+		tableView.getColumns().addAll(columnId, columnFirstName, columnLastName, columnDescription, columnDateOfSession,
 				columnTypeOfSession, columnPriceOfSession);
 
+		columnId.setCellValueFactory(new PropertyValueFactory<Client,String>("id"));
 		columnFirstName.setCellValueFactory(new PropertyValueFactory<Client, String>("firstName"));
 		columnLastName.setCellValueFactory(new PropertyValueFactory<Client, String>("lastName"));
 		columnDescription.setCellValueFactory(new PropertyValueFactory<Client, String>("description"));

@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Client {
 
+	private SimpleStringProperty id;
 	private SimpleStringProperty firstName;
 	private SimpleStringProperty lastName;
 	private SimpleStringProperty description;
@@ -11,8 +12,9 @@ public class Client {
 	private SimpleStringProperty typeOfSession;
 	private SimpleStringProperty priceOfSession;
 
-	public Client(String firstName, String lastName, String description, String dateOfSession, String typeOfSession,
+	public Client(String id, String firstName, String lastName, String description, String dateOfSession, String typeOfSession,
 			String priceOfSession) {
+		this.id = new SimpleStringProperty(id);
 		this.firstName = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 		this.description = new SimpleStringProperty(description);
@@ -23,6 +25,14 @@ public class Client {
 
 	public Client() {
 
+	}
+	
+	public String getId() {
+		return id.get();
+	}
+
+	public void setId(String id) {
+		this.firstName.set(id);
 	}
 
 	public String getFirstName() {

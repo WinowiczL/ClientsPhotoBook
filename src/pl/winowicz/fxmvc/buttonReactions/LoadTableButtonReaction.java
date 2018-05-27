@@ -29,9 +29,10 @@ public class LoadTableButtonReaction {
 		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", "qwerty123");
 
 		Statement statement = conn.createStatement();
-		final String sqlQuery = "SELECT firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions";
+		final String sqlQuery = "SELECT id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions";
 		ResultSet resultSet = statement.executeQuery(sqlQuery);
 
+		String id = null;
 		String firstName = null;
 		String lastName = null;
 		String description = null;
@@ -45,7 +46,8 @@ public class LoadTableButtonReaction {
 			dateOfSession = resultSet.getString("dateOfSession");
 			typeOfSession = resultSet.getString("typeOfSession");
 			priceOfSession = resultSet.getString("priceOfSession");
-			list.add(new Client(firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession));
+			id = resultSet.getString("id");
+			list.add(new Client(id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession));
 		}
 
 		if (statement != null) {

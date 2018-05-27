@@ -57,6 +57,9 @@ public class MainController implements Initializable {
 
 	@FXML
 	private AnchorPane addSessionAnchorPane;
+	
+	@FXML
+	private TextField fillId;
 
 	@FXML
 	private TextField fillFirstName;
@@ -159,7 +162,7 @@ public class MainController implements Initializable {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
-					saveSessionController.saveSession(fillFirstName, fillLastName, fillDescription, fillDateOfSession,
+					saveSessionController.saveSession(fillId, fillFirstName, fillLastName, fillDescription, fillDateOfSession,
 							fillTypeOfSession, fillPriceOfSession);
 					loadTableButtonReaction.loadTable(tableView, loadTableButton);
 				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
