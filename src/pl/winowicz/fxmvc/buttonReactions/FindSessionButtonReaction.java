@@ -21,12 +21,9 @@ public class FindSessionButtonReaction {
 	public void findSession(ComboBox<String> findComboBox, TableView<Client> tableView, TextField fillValueToFind)
 			throws ClassNotFoundException, SQLException, InterruptedException {
 
-		
 		String category = findComboBox.getValue();
 		String value = fillValueToFind.getText();
 
-		System.out.println("SELECT id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions"
-				+ " WHERE " + category + "='" + value + "';");
 		List<Client> list = new ArrayList<>();
 		final String driver = "com.mysql.jdbc.Driver";
 		Class.forName(driver);
@@ -39,23 +36,19 @@ public class FindSessionButtonReaction {
 				+ " WHERE " + category + "='" + value + "';");
 		ResultSet resultSet = statement.executeQuery(sqlQuery);
 
-		String id = null;
-		String firstName = null;
-		String lastName = null;
-		String description = null;
-		String dateOfSession = null;
-		String typeOfSession = null;
-		String priceOfSession = null;
+
 		while (resultSet.next()) {
-			firstName = resultSet.getString("firstName");
-			lastName = resultSet.getString("lastName");
-			description = resultSet.getString("description");
-			dateOfSession = resultSet.getString("dateOfSession");
-			typeOfSession = resultSet.getString("typeOfSession");
-			priceOfSession = resultSet.getString("priceOfSession");
-			id = resultSet.getString("id");
+			String firstName = resultSet.getString("firstName");
+			String lastName = resultSet.getString("lastName");
+			String description = resultSet.getString("description");
+			String dateOfSession = resultSet.getString("dateOfSession");
+			String typeOfSession = resultSet.getString("typeOfSession");
+			String priceOfSession = resultSet.getString("priceOfSession");
+			String id = resultSet.getString("id");
 			list.add(new Client(id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession));
 		}
+		
+		fillValueToFind.setText(null);
 
 		if (statement != null) {
 			statement.close();

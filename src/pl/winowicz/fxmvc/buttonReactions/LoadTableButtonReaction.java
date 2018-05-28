@@ -32,21 +32,14 @@ public class LoadTableButtonReaction {
 		final String sqlQuery = "SELECT id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions";
 		ResultSet resultSet = statement.executeQuery(sqlQuery);
 
-		String id = null;
-		String firstName = null;
-		String lastName = null;
-		String description = null;
-		String dateOfSession = null;
-		String typeOfSession = null;
-		String priceOfSession = null;
 		while (resultSet.next()) {
-			firstName = resultSet.getString("firstName");
-			lastName = resultSet.getString("lastName");
-			description = resultSet.getString("description");
-			dateOfSession = resultSet.getString("dateOfSession");
-			typeOfSession = resultSet.getString("typeOfSession");
-			priceOfSession = resultSet.getString("priceOfSession");
-			id = resultSet.getString("id");
+			String firstName = resultSet.getString("firstName");
+			String lastName = resultSet.getString("lastName");
+			String description = resultSet.getString("description");
+			String dateOfSession = resultSet.getString("dateOfSession");
+			String typeOfSession = resultSet.getString("typeOfSession");
+			String priceOfSession = resultSet.getString("priceOfSession");
+			String id = resultSet.getString("id");
 			list.add(new Client(id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession));
 		}
 
