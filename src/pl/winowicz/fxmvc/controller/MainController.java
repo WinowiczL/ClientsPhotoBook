@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import pl.winowicz.data.Client;
 import pl.winowicz.fxmvc.app.Main;
+import pl.winowicz.fxmvc.buttonReactions.DeleteButtonReaction;
 import pl.winowicz.fxmvc.buttonReactions.FindSessionButtonReaction;
 import pl.winowicz.fxmvc.buttonReactions.LoadTableButtonReaction;
 import pl.winowicz.fxmvc.buttonReactions.OrderByButtonReaction;
@@ -32,6 +33,7 @@ public class MainController implements Initializable {
 	OrderByButtonReaction orderByButtonReaction = new OrderByButtonReaction();
 	FindSessionButtonReaction findSessionButtonReaction = new FindSessionButtonReaction();
 	ChooseScene chooseScene = new ChooseScene();
+	DeleteButtonReaction deleteButtonReaction = new DeleteButtonReaction();
 	Main mc = new Main();
 
 	@FXML
@@ -57,7 +59,7 @@ public class MainController implements Initializable {
 
 	@FXML
 	private AnchorPane addSessionAnchorPane;
-	
+
 	@FXML
 	private TextField fillId;
 
@@ -97,6 +99,12 @@ public class MainController implements Initializable {
 	@FXML
 	private ComboBox<String> findComboBox;
 
+	@FXML
+	private TextField fillDelete;
+
+	@FXML
+	private Button deleteButton;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -134,6 +142,19 @@ public class MainController implements Initializable {
 			}
 		});
 
+		deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					deleteButtonReaction.deleteRecord(fillDelete);
+					loadTableButtonReaction.loadTable(tableView, loadTableButton);
+				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
 		findComboBox.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -162,8 +183,8 @@ public class MainController implements Initializable {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
-					saveSessionController.saveSession(fillId, fillFirstName, fillLastName, fillDescription, fillDateOfSession,
-							fillTypeOfSession, fillPriceOfSession);
+					saveSessionController.saveSession(fillId, fillFirstName, fillLastName, fillDescription,
+							fillDateOfSession, fillTypeOfSession, fillPriceOfSession);
 					loadTableButtonReaction.loadTable(tableView, loadTableButton);
 				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
 					// TODO Auto-generated catch block
