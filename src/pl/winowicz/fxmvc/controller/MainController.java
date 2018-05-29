@@ -1,12 +1,10 @@
 package pl.winowicz.fxmvc.controller;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -127,7 +125,7 @@ public class MainController implements Initializable {
 		orderByComboBox.setOnAction(event -> {
 			try {
 				orderByButtonReaction.orderByReaction(orderByComboBox, tableView);
-			} catch (ClassNotFoundException | SQLException | InterruptedException e) {
+			} catch (ClassNotFoundException | SQLException | InterruptedException | FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		});
@@ -136,7 +134,7 @@ public class MainController implements Initializable {
 			try {
 				deleteButtonReaction.deleteRecord(fillDelete);
 				loadTableButtonReaction.loadTable(tableView, loadTableButton);
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException | FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		});
@@ -144,7 +142,7 @@ public class MainController implements Initializable {
 		findComboBox.setOnAction(event -> {
 			try {
 				findSessionButtonReaction.findSession(findComboBox, tableView, fillValueToFind);
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException | FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		});
@@ -152,7 +150,7 @@ public class MainController implements Initializable {
 		loadTableButton.setOnAction(event -> {
 			try {
 				loadTableButtonReaction.loadTable(tableView, loadTableButton);
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException | FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		});
@@ -162,7 +160,7 @@ public class MainController implements Initializable {
 				saveSessionController.saveSession(fillId, fillFirstName, fillLastName, fillDescription,
 						fillDateOfSession, fillTypeOfSession, fillPriceOfSession);
 				loadTableButtonReaction.loadTable(tableView, loadTableButton);
-			} catch (ClassNotFoundException | SQLException | InterruptedException e) {
+			} catch (ClassNotFoundException | SQLException | InterruptedException | FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		});

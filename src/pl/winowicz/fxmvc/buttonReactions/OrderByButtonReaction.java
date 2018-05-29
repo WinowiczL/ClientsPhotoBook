@@ -1,5 +1,6 @@
 package pl.winowicz.fxmvc.buttonReactions;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import javafx.collections.ObservableList;
@@ -13,7 +14,7 @@ public class OrderByButtonReaction {
 	JdbcMain jdbcMain = new JdbcMain();
 
 	public void orderByReaction(ComboBox<String> orderByComboBox, TableView<Client> tableView)
-			throws ClassNotFoundException, SQLException, InterruptedException {
+			throws ClassNotFoundException, SQLException, InterruptedException, FileNotFoundException {
 
 		String value = orderByComboBox.getValue();
 		

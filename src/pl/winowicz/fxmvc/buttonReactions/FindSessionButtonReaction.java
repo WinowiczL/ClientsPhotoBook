@@ -1,5 +1,6 @@
 package pl.winowicz.fxmvc.buttonReactions;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import javafx.collections.ObservableList;
@@ -19,7 +20,7 @@ public class FindSessionButtonReaction {
 	
 
 	public void findSession(ComboBox<String> findComboBox, TableView<Client> tableView, TextField fillValueToFind)
-			throws ClassNotFoundException, SQLException {
+			throws ClassNotFoundException, SQLException, FileNotFoundException {
 
 		String category = findComboBox.getValue();
 		String value = fillValueToFind.getText();

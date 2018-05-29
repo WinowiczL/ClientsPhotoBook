@@ -1,5 +1,6 @@
 package pl.winowicz.fxmvc.buttonReactions;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import javafx.collections.ObservableList;
@@ -13,7 +14,7 @@ public class LoadTableButtonReaction {
 	JdbcMain jdbcMain = new JdbcMain();
 
 	public void loadTable(TableView<Client> tableView, Button loadTableButton)
-			throws SQLException, ClassNotFoundException {
+			throws SQLException, ClassNotFoundException, FileNotFoundException {
 
 		final String sqlSelectAllQuery = ("SELECT id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions");
 		

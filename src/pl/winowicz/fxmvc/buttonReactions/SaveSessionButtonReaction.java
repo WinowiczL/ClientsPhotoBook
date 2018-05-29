@@ -1,5 +1,6 @@
 package pl.winowicz.fxmvc.buttonReactions;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import javafx.scene.control.TextField;
@@ -11,7 +12,7 @@ public class SaveSessionButtonReaction {
 
 	public void saveSession(TextField fillId, TextField fillFirstName, TextField fillLastName,
 			TextField fillDescription, TextField fillDateOfSession, TextField fillTypeOfSession,
-			TextField fillPriceOfSession) throws ClassNotFoundException, SQLException, InterruptedException {
+			TextField fillPriceOfSession) throws ClassNotFoundException, SQLException, InterruptedException, FileNotFoundException {
 
 		String id = fillId.getText();
 		String firstName = fillFirstName.getText();

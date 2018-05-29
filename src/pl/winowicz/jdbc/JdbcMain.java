@@ -1,5 +1,6 @@
 package pl.winowicz.jdbc;
 
+import java.io.FileNotFoundException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,17 +15,19 @@ import javafx.collections.ObservableList;
 import pl.winowicz.data.Client;
 
 public class JdbcMain {
+	
+	ReadPassword rp = new ReadPassword();
 
 	public static final String driver = "com.mysql.jdbc.Driver";
 
-	public ObservableList<Client> jdbcSelect(String query) throws SQLException, ClassNotFoundException {
+	public ObservableList<Client> jdbcSelect(String query) throws SQLException, ClassNotFoundException, FileNotFoundException {
 
 		List<Client> list = new ArrayList<>();
 		final String driver = "com.mysql.jdbc.Driver";
 		Class.forName(driver);
 
 		final String dbPath = "jdbc:mysql://localhost:3306/sys";
-		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", "qwerty123");
+		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", rp.readPass());
 
 		Statement statement = conn.createStatement();
 		final String sqlQuery = query;
@@ -57,13 +60,13 @@ public class JdbcMain {
 
 	}
 
-	public void jdbcUpdate(String query) throws SQLException, ClassNotFoundException {
+	public void jdbcUpdate(String query) throws SQLException, ClassNotFoundException, FileNotFoundException {
 		
 		final String driver = "com.mysql.jdbc.Driver";
 		Class.forName(driver);
 
 		final String dbPath = "jdbc:mysql://localhost:3306/sys";
-		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", "qwerty123");
+		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", rp.readPass());
 
 		Statement statement = conn.createStatement();
 		
