@@ -25,8 +25,8 @@ public class FindSessionButtonReaction {
 		String category = findComboBox.getValue();
 		String value = fillValueToFind.getText();
 		
-		final String sqlFindQuery = ("SELECT id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions"
-				+ " WHERE " + category + "='" + value + "';");	
+		final String sqlFindQuery = String.format("SELECT id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession FROM sessions"
+				+ " WHERE %s = '%s';", category, value);	
 
 		ObservableList<Client> data = jdbcMain.jdbcSelect(sqlFindQuery);
 

@@ -21,13 +21,16 @@ public class JdbcMain {
 	public static final String driver = "com.mysql.jdbc.Driver";
 
 	public ObservableList<Client> jdbcSelect(String query) throws SQLException, ClassNotFoundException, FileNotFoundException {
+		
+		String login = rp.readPass().get(0);
+		String pass = rp.readPass().get(1);
 
 		List<Client> list = new ArrayList<>();
 		final String driver = "com.mysql.jdbc.Driver";
 		Class.forName(driver);
 
 		final String dbPath = "jdbc:mysql://localhost:3306/sys";
-		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", rp.readPass());
+		Connection conn = (Connection) DriverManager.getConnection(dbPath, login, pass);
 
 		Statement statement = conn.createStatement();
 		final String sqlQuery = query;
@@ -62,11 +65,14 @@ public class JdbcMain {
 
 	public void jdbcUpdate(String query) throws SQLException, ClassNotFoundException, FileNotFoundException {
 		
+		String login = rp.readPass().get(0);
+		String pass = rp.readPass().get(1);
+		
 		final String driver = "com.mysql.jdbc.Driver";
 		Class.forName(driver);
 
 		final String dbPath = "jdbc:mysql://localhost:3306/sys";
-		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", rp.readPass());
+		Connection conn = (Connection) DriverManager.getConnection(dbPath, login, pass);
 
 		Statement statement = conn.createStatement();
 		

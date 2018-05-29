@@ -7,12 +7,13 @@ import javafx.scene.control.TextField;
 import pl.winowicz.jdbc.JdbcMain;
 
 public class SaveSessionButtonReaction {
-	
+
 	JdbcMain jdbcMain = new JdbcMain();
 
 	public void saveSession(TextField fillId, TextField fillFirstName, TextField fillLastName,
 			TextField fillDescription, TextField fillDateOfSession, TextField fillTypeOfSession,
-			TextField fillPriceOfSession) throws ClassNotFoundException, SQLException, InterruptedException, FileNotFoundException {
+			TextField fillPriceOfSession)
+			throws ClassNotFoundException, SQLException, InterruptedException, FileNotFoundException {
 
 		String id = fillId.getText();
 		String firstName = fillFirstName.getText();
@@ -21,9 +22,10 @@ public class SaveSessionButtonReaction {
 		String dateOfSession = fillDateOfSession.getText();
 		String typeOfSession = fillTypeOfSession.getText();
 		String priceOfSession = fillPriceOfSession.getText();
-		
-		String queryInsert = "INSERT INTO sessions VALUES('" + id + "','" + firstName + "','" + lastName + "','"
-				+ description + "','" + dateOfSession + "','" + typeOfSession + "','" + priceOfSession + "');";
+
+		String queryInsert = String.format(
+				"INSERT INTO sessions VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+				id, firstName, lastName, description, dateOfSession, typeOfSession, priceOfSession);
 
 		jdbcMain.jdbcUpdate(queryInsert);
 

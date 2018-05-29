@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController implements Initializable {
@@ -35,6 +36,24 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		 
+		passField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				switch (event.getCode()) {
+				case ENTER:
+					if (passField.getText().equals("library")) {
+						try {
+							chooseScene.setSceneMainPane();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					};
+					break;
+				}
+
+			}
+		});
 
 		selectButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

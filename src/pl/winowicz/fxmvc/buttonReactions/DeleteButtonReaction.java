@@ -11,10 +11,9 @@ public class DeleteButtonReaction {
 
 	public void deleteRecord(javafx.scene.control.TextField fillDelete) throws ClassNotFoundException, SQLException, FileNotFoundException {
 
-		String value = fillDelete.getText();
+		String idValue = fillDelete.getText();
 		
-		String queryDelete = "DELETE FROM sessions WHERE id = '" + value + "';";
-
+		final String queryDelete = String.format("DELETE FROM sessions WHERE id = '%s'", idValue);
 		jdbcMain.jdbcUpdate(queryDelete);
 
 		fillDelete.setText(null);
