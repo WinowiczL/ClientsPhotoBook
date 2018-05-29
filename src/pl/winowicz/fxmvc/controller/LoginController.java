@@ -1,5 +1,6 @@
 package pl.winowicz.fxmvc.controller;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController implements Initializable {
@@ -29,13 +31,13 @@ public class LoginController implements Initializable {
 
 	@FXML
 	private PasswordField passField;
-	
+
 	@FXML
-    private ImageView imageView;
+	private ImageView imageView;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-        
+
 		selectButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -43,12 +45,12 @@ public class LoginController implements Initializable {
 					try {
 						chooseScene.setSceneMainPane();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
 				}
 			}
 		});
+
 	}
 }

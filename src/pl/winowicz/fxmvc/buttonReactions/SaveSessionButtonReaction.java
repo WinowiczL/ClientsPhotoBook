@@ -1,14 +1,13 @@
 package pl.winowicz.fxmvc.buttonReactions;
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import com.mysql.jdbc.Connection;
 
 import javafx.scene.control.TextField;
+import pl.winowicz.jdbc.JdbcMain;
 
 public class SaveSessionButtonReaction {
+	
+	JdbcMain jdbcMain = new JdbcMain();
 
 	public void saveSession(TextField fillId, TextField fillFirstName, TextField fillLastName,
 			TextField fillDescription, TextField fillDateOfSession, TextField fillTypeOfSession,
@@ -21,19 +20,11 @@ public class SaveSessionButtonReaction {
 		String dateOfSession = fillDateOfSession.getText();
 		String typeOfSession = fillTypeOfSession.getText();
 		String priceOfSession = fillPriceOfSession.getText();
-
-		final String driver = "com.mysql.jdbc.Driver";
-		Class.forName(driver);
-
-		final String dbPath = "jdbc:mysql://localhost:3306/sys";
-		Connection conn = (Connection) DriverManager.getConnection(dbPath, "root", "qwerty123");
-
-		Statement statement = conn.createStatement();
-
+		
 		String queryInsert = "INSERT INTO sessions VALUES('" + id + "','" + firstName + "','" + lastName + "','"
 				+ description + "','" + dateOfSession + "','" + typeOfSession + "','" + priceOfSession + "');";
-		final String sqlQueryInsert = queryInsert;
-		statement.executeUpdate(sqlQueryInsert);
+
+		jdbcMain.jdbcUpdate(queryInsert);
 
 		fillId.setText(null);
 		fillFirstName.setText(null);

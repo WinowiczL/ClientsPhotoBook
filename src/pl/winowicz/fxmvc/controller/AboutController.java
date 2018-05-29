@@ -17,30 +17,30 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
 public class AboutController implements Initializable {
-	
+
 	ChooseScene chooseScene = new ChooseScene();
 
 	@FXML
-    private Button backToMainPaneButton;
+	private Button backToMainPaneButton;
 
-    @FXML
-    private Button StartButton;
+	@FXML
+	private Button StartButton;
 
-    @FXML
-    private Button pauseButton;
+	@FXML
+	private Button pauseButton;
 
-    @FXML
-    private Button stopButton;
+	@FXML
+	private Button stopButton;
 
-    @FXML 
-    private MediaView mediaView;
-    
-    private MediaPlayer mediaPlayer;
-    private Media media;
+	@FXML
+	private MediaView mediaView;
+
+	private MediaPlayer mediaPlayer;
+	private Media media;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		String path = new File("src/pl/winowicz/fxmvc/media/HowToUse.mp4").getAbsolutePath();
 		media = new Media(new File(path).toURI().toString());
 		mediaPlayer = new MediaPlayer(media);
@@ -51,16 +51,11 @@ public class AboutController implements Initializable {
 		width.bind(Bindings.selectDouble(mediaView.sceneProperty(), "width"));
 		height.bind(Bindings.selectDouble(mediaView.sceneProperty(), "height"));
 
-		backToMainPaneButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					chooseScene.setSceneMainPane();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
+		backToMainPaneButton.setOnAction(event -> {
+			try {
+				chooseScene.setSceneMainPane();
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
 		});
 	}

@@ -110,93 +110,61 @@ public class MainController implements Initializable {
 
 		creatingBetterButtons.createBetterButtons(tableView, orderByComboBox, findComboBox);
 
-		if(fillDelete.getText().equals(null)) {
+		if (fillDelete.getText().equals(null)) {
 			deleteButton.isDisabled();
 		}
-		
-		exitButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				Main.window.close();
+
+		exitButton.setOnAction(event -> Main.window.close());
+
+		aboutButton.setOnAction(event -> {
+			try {
+				chooseScene.setSceneAboutPane();
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
 		});
 
-		aboutButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					chooseScene.setSceneAboutPane();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
+		orderByComboBox.setOnAction(event -> {
+			try {
+				orderByButtonReaction.orderByReaction(orderByComboBox, tableView);
+			} catch (ClassNotFoundException | SQLException | InterruptedException e) {
+				e.printStackTrace();
 			}
 		});
 
-		orderByComboBox.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					orderByButtonReaction.orderByReaction(orderByComboBox, tableView);
-				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		deleteButton.setOnAction(event -> {
+			try {
+				deleteButtonReaction.deleteRecord(fillDelete);
+				loadTableButtonReaction.loadTable(tableView, loadTableButton);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
 			}
 		});
 
-		deleteButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					deleteButtonReaction.deleteRecord(fillDelete);
-					loadTableButtonReaction.loadTable(tableView, loadTableButton);
-				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		findComboBox.setOnAction(event -> {
+			try {
+				findSessionButtonReaction.findSession(findComboBox, tableView, fillValueToFind);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
 			}
 		});
 
-		findComboBox.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					findSessionButtonReaction.findSession(findComboBox, tableView, fillValueToFind);
-				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		loadTableButton.setOnAction(event -> {
+			try {
+				loadTableButtonReaction.loadTable(tableView, loadTableButton);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
 			}
 		});
 
-		loadTableButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					loadTableButtonReaction.loadTable(tableView, loadTableButton);
-				} catch (ClassNotFoundException | SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		saveButton.setOnAction(event -> {
+			try {
+				saveSessionController.saveSession(fillId, fillFirstName, fillLastName, fillDescription,
+						fillDateOfSession, fillTypeOfSession, fillPriceOfSession);
+				loadTableButtonReaction.loadTable(tableView, loadTableButton);
+			} catch (ClassNotFoundException | SQLException | InterruptedException e) {
+				e.printStackTrace();
 			}
 		});
-
-		saveButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					saveSessionController.saveSession(fillId, fillFirstName, fillLastName, fillDescription,
-							fillDateOfSession, fillTypeOfSession, fillPriceOfSession);
-					loadTableButtonReaction.loadTable(tableView, loadTableButton);
-				} catch (ClassNotFoundException | SQLException | InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			}
-		});
-
 	}
 }
