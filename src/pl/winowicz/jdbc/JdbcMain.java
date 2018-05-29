@@ -15,13 +15,14 @@ import javafx.collections.ObservableList;
 import pl.winowicz.data.Client;
 
 public class JdbcMain {
-	
+
 	ReadPassword rp = new ReadPassword();
 
 	public static final String driver = "com.mysql.jdbc.Driver";
 
-	public ObservableList<Client> jdbcSelect(String query) throws SQLException, ClassNotFoundException, FileNotFoundException {
-		
+	public ObservableList<Client> jdbcSelect(String query)
+			throws SQLException, ClassNotFoundException, FileNotFoundException {
+
 		String login = rp.readPass().get(0);
 		String pass = rp.readPass().get(1);
 
@@ -64,10 +65,10 @@ public class JdbcMain {
 	}
 
 	public void jdbcUpdate(String query) throws SQLException, ClassNotFoundException, FileNotFoundException {
-		
+
 		String login = rp.readPass().get(0);
 		String pass = rp.readPass().get(1);
-		
+
 		final String driver = "com.mysql.jdbc.Driver";
 		Class.forName(driver);
 
@@ -75,18 +76,17 @@ public class JdbcMain {
 		Connection conn = (Connection) DriverManager.getConnection(dbPath, login, pass);
 
 		Statement statement = conn.createStatement();
-		
-		
+
 		final String sqlQueryInsert = query;
 		statement.executeUpdate(sqlQueryInsert);
 
 		if (statement != null) {
 			statement.close();
 		}
-	
+
 		if (conn != null) {
 			conn.close();
 		}
-		
+
 	}
 }

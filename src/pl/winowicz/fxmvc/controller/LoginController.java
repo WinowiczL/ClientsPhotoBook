@@ -50,6 +50,8 @@ public class LoginController implements Initializable {
 						}
 					};
 					break;
+				default:
+					break;
 				}
 
 			}
